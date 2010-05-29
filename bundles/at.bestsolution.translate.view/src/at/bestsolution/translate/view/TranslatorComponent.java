@@ -12,12 +12,14 @@ package at.bestsolution.translate.view;
 
 import java.lang.reflect.InvocationTargetException;
 
-import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 import org.eclipse.core.databinding.beans.PojoProperties;
 import org.eclipse.core.databinding.observable.list.IObservableList;
+import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.core.databinding.property.list.IListProperty;
 import org.eclipse.core.databinding.property.value.IValueProperty;
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.databinding.viewers.ViewerProperties;
 import org.eclipse.jface.viewers.ComboViewer;
@@ -32,10 +34,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.translate.services.ITranslator;
 import at.bestsolution.translate.services.ITranslatorProvider;
@@ -43,13 +41,25 @@ import at.bestsolution.translate.services.ITranslator.FromTo;
 
 public class TranslatorComponent {
 	private Text term;
+	private ComboViewer translator;
 
-	public TranslatorComponent() {
-
+	@Inject
+	public TranslatorComponent(Composite parent) {
+		createUI(parent);
 	}
 	
-	@PostConstruct
-	public void createUI(Composite parent) {
+	@Inject
+	void setTranslationProvider(@Optional ITranslatorProvider provider) {
+		if( provider == null ) {
+			if( ! translator.getControl().isDisposed() ) {
+				translator.setInput(new WritableList());
+			}
+		} else {
+			translator.setInput(provider.getTranslators());
+		}
+	}
+	
+	private void createUI(Composite parent) {
 		GridLayout layout = new GridLayout(2, false);
 		parent.setLayout(layout);
 
@@ -71,9 +81,7 @@ public class TranslatorComponent {
 		l = new Label(parent, SWT.NONE);
 		l.setText("Translator");
 
-		IObservableList translatorsObs = getTranslators();
-
-		final ComboViewer translator = new ComboViewer(parent);
+		translator = new ComboViewer(parent);
 		translator.getControl().setLayoutData(
 				new GridData(GridData.FILL_HORIZONTAL));
 		translator.setContentProvider(new ObservableListContentProvider());
@@ -83,7 +91,6 @@ public class TranslatorComponent {
 				return ((ITranslator) element).getName();
 			}
 		});
-		translator.setInput(translatorsObs);
 
 		l = new Label(parent, SWT.NONE);
 		l.setText("Language");
@@ -143,17 +150,6 @@ public class TranslatorComponent {
 				}
 			}
 		});
-	}
-
-	private IObservableList getTranslators() {
-		Bundle bundle = FrameworkUtil.getBundle(getClass());
-		BundleContext context = bundle.getBundleContext();
-		ServiceReference reference = context
-				.getServiceReference(ITranslatorProvider.class.getName());
-		ITranslatorProvider pv = (ITranslatorProvider) context
-				.getService(reference);
-
-		return pv.getTranslators();
 	}
 
 	public void setFocus() {
