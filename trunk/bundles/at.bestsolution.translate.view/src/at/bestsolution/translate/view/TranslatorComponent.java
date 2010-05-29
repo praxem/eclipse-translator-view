@@ -12,6 +12,8 @@ package at.bestsolution.translate.view;
 
 import java.lang.reflect.InvocationTargetException;
 
+import javax.annotation.PostConstruct;
+
 import org.eclipse.core.databinding.beans.PojoProperties;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.property.list.IListProperty;
@@ -45,7 +47,8 @@ public class TranslatorComponent {
 	public TranslatorComponent() {
 
 	}
-
+	
+	@PostConstruct
 	public void createUI(Composite parent) {
 		GridLayout layout = new GridLayout(2, false);
 		parent.setLayout(layout);
