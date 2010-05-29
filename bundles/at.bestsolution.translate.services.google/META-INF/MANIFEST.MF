@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Google
+Bundle-SymbolicName: at.bestsolution.translate.services.google
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: at.bestsolution.translate.services;bundle-version="1.0.0"
+Bundle-ClassPath: libs/google-api-translate-java-0.92.jar,
+ .
