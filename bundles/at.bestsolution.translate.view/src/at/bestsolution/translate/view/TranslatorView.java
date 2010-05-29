@@ -10,6 +10,8 @@
  *******************************************************************************/
 package at.bestsolution.translate.view;
 
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.*;
 
@@ -18,17 +20,30 @@ public class TranslatorView extends ViewPart {
 
 	public static final String ID = "at.bestsolution.translate.view.views.TranslatorView";
 
-	private TranslatorComponent component = new TranslatorComponent();
+	private IEclipseContext context;
+	private TranslatorComponent component;
 
+	public TranslatorView() {
+		
+	}
+	
 	public void createPartControl(Composite parent) {
-		component.createUI(parent);
+		IEclipseContextProvider p = (IEclipseContextProvider) getSite().getService(IEclipseContextProvider.class);
+		context = p.getContext().createChild();
+		context.set(Composite.class, parent);
+		component = ContextInjectionFactory.make(TranslatorComponent.class, context);
 	}
 
-	
 	/**
 	 * Passing the focus request to the viewer's control.
 	 */
 	public void setFocus() {
 		component.setFocus();
+	}
+	
+	@Override
+	public void dispose() {
+		context.dispose();
+		super.dispose();
 	}
 }
