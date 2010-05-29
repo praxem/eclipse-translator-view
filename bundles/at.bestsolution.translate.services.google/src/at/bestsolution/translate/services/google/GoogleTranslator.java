@@ -24,7 +24,15 @@ public class GoogleTranslator implements ITranslator {
 	{
 		ArrayList<FromTo> l = new ArrayList<FromTo>();
 		for(Language fromLang : Language.values()) {
+			if( fromLang == Language.AUTO_DETECT ) {
+				continue;
+			}
+			
 			for( Language toLanguage : Language.values() ) {
+				if( toLanguage == Language.AUTO_DETECT ) {
+					continue;
+				}
+				
 				if( fromLang != toLanguage ) {
 					l.add(new FromTo(fromLang.name(), toLanguage.name()));
 				}
@@ -43,6 +51,7 @@ public class GoogleTranslator implements ITranslator {
 
 	public String translate(FromTo fromTo, String term) throws InvocationTargetException {
 		try {
+			Translate.setHttpReferrer("http://code.google.com/a/eclipselabs.org/p/eclipse-translator-view/");
 			return Translate.execute(term, Language.valueOf(fromTo.from), Language.valueOf(fromTo.to));
 		} catch (Exception e) {
 			throw new InvocationTargetException(e);

@@ -23,15 +23,21 @@ public class TranslatorProviderComponent implements ITranslatorProvider {
 		return list;
 	}
 
-	public void addTranslator(ITranslator translator) {
-		synchronized (list) {
-			list.add(translator);
-		}
+	public void addTranslator(final ITranslator translator) {
+		list.getRealm().exec(new Runnable() {
+			
+			public void run() {
+				list.add(translator);
+			}
+		});
 	}
 	
-	public void removeTranslator( ITranslator translator ) {
-		synchronized (list) {
-			list.remove(translator);
-		}
+	public void removeTranslator(final ITranslator translator ) {
+		list.getRealm().exec(new Runnable() {
+			
+			public void run() {
+				list.remove(translator);
+			}
+		});
 	}
 }
