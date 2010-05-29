@@ -7,3 +7,5 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: at.bestsolution.translate.services;bundle-version="1.0.0"
 Bundle-ClassPath: libs/google-api-translate-java-0.92.jar,
  .
+Service-Component: OSGI-INF/googletranslator.xml
+Bundle-ActivationPolicy: lazy
