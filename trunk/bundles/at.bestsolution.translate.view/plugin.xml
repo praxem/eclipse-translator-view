@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Utilities"
+            id="at.bestsolution.translate.view">
+      </category>
+      <view
+            name="Translator View"
+            icon="icons/sample.gif"
+            category="at.bestsolution.translate.view"
+            class="at.bestsolution.translate.view.TranslatorView"
+            id="at.bestsolution.translate.view.TranslatorView">
+      </view>
+   </extension>
+
+</plugin>
