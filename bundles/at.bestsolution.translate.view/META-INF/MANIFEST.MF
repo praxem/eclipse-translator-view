@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: View
 Bundle-SymbolicName: at.bestsolution.translate.view; singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: at.bestsolution.translate.view.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.databinding;bundle-version="1.3.100",
