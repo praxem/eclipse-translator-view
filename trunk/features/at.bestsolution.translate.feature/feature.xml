@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="at.bestsolution.translate.feature"
+      label="Feature"
+      version="1.0.0.qualifier"
+      provider-name="BestSolution.at">
+
+   <description url="http://code.google.com/a/eclipselabs.org/p/eclipse-translator-view/">
+      This feature provides a View which allows to translate strings and complete sentences
+   </description>
+
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
+      Core-Library:
+-------------
+Copyright (c) 2010 BestSolution.at and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+
+Google-Translation connector:
+-----------------------------
+Google Translation library from http://code.google.com/p/google-api-translate-java/
+is released under LGPL.
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="at.bestsolution.translate.services"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.bestsolution.translate.services.google"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.bestsolution.translate.view"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
