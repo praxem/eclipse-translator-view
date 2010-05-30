@@ -10,7 +10,7 @@
       </category>
       <view
             name="Translator View"
-            icon="icons/sample.gif"
+            icon="icons/page_find.png"
             category="at.bestsolution.translate.view"
             class="at.bestsolution.translate.view.TranslatorView"
             id="at.bestsolution.translate.view.TranslatorView">
