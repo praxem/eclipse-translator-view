@@ -28,7 +28,7 @@ is released under LGPL.
    </license>
 
    <url>
-      <discovery label="e4 updatesite" url="http://download.eclipse.org/e4/downloads/drops/S-1.0M6-201005232015/"/>
+      <discovery label="e4 updatesite" url="http://download.eclipse.org/e4/sdk/drops/S-4.0M6-201005231612/repository"/>
    </url>
 
    <requires>
