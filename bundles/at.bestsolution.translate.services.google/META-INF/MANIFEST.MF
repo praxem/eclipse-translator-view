@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Google
+Bundle-Name: Google Translation Connector
 Bundle-SymbolicName: at.bestsolution.translate.services.google
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
@@ -9,3 +9,4 @@ Bundle-ClassPath: libs/google-api-translate-java-0.92.jar,
  .
 Service-Component: OSGI-INF/googletranslator.xml
 Bundle-ActivationPolicy: lazy
+Bundle-Vendor: BestSolution.at
