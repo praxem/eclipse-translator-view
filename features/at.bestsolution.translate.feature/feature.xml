@@ -27,6 +27,10 @@ is released under LGPL.
       [Enter License Description here.]
    </license>
 
+   <url>
+      <discovery label="e4 updatesite" url="http://download.eclipse.org/e4/downloads/drops/S-1.0M6-201005232015/"/>
+   </url>
+
    <plugin
          id="at.bestsolution.translate.services"
          download-size="0"
