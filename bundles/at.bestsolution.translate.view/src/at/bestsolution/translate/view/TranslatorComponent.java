@@ -37,7 +37,7 @@ import org.eclipse.swt.widgets.Text;
 
 import at.bestsolution.translate.services.ITranslator;
 import at.bestsolution.translate.services.ITranslatorProvider;
-import at.bestsolution.translate.services.ITranslator.FromTo;
+import at.bestsolution.translate.services.ITranslator.TranslationLanguage;
 
 public class TranslatorComponent {
 	private Text term;
@@ -93,26 +93,42 @@ public class TranslatorComponent {
 		});
 
 		l = new Label(parent, SWT.NONE);
-		l.setText("Language");
+		l.setText("Source-Language");
 
-		final ComboViewer language = new ComboViewer(parent);
-		language.getControl().setLayoutData(
+		final ComboViewer sourceLanguage = new ComboViewer(parent);
+		sourceLanguage.getControl().setLayoutData(
 				new GridData(GridData.FILL_HORIZONTAL));
-		language.setContentProvider(new ObservableListContentProvider());
-		language.setLabelProvider(new LabelProvider() {
+		sourceLanguage.setContentProvider(new ObservableListContentProvider());
+		sourceLanguage.setLabelProvider(new LabelProvider() {
 			@Override
 			public String getText(Object element) {
-				return ((FromTo) element).from + " - " + ((FromTo) element).to;
+				return ((TranslationLanguage) element).name;
 			}
 		});
 
-		IListProperty fromToProp = PojoProperties.list("fromTo");
+		IListProperty fromProp = PojoProperties.list("languages");
 		IValueProperty selectionProp = ViewerProperties.singleSelection();
 
-		IObservableList input = fromToProp.observeDetail(selectionProp
+		IObservableList input = fromProp.observeDetail(selectionProp
 				.observe(translator));
-		language.setInput(input);
+		sourceLanguage.setInput(input);
 
+		l = new Label(parent, SWT.NONE);
+		l.setText("Target-Language");
+
+		final ComboViewer targetLanguage = new ComboViewer(parent);
+		targetLanguage.getControl().setLayoutData(
+				new GridData(GridData.FILL_HORIZONTAL));
+		targetLanguage.setContentProvider(new ObservableListContentProvider());
+		targetLanguage.setLabelProvider(new LabelProvider());
+
+		IListProperty targetsProp = PojoProperties.list("targets");
+
+		input = targetsProp.observeDetail(selectionProp
+				.observe(sourceLanguage));
+		targetLanguage.setInput(input);
+		
+		
 		Button b = new Button(parent, SWT.PUSH);
 		b.setText("Translate");
 		b.setLayoutData(new GridData(GridData.END, GridData.CENTER, false,
@@ -133,14 +149,18 @@ public class TranslatorComponent {
 			public void widgetSelected(SelectionEvent e) {
 				IStructuredSelection transSelection = (IStructuredSelection) translator
 						.getSelection();
-				IStructuredSelection fromToSelection = (IStructuredSelection) language
+				IStructuredSelection sourceSelection = (IStructuredSelection) sourceLanguage
 						.getSelection();
+				IStructuredSelection targetSelection = (IStructuredSelection) targetLanguage
+				.getSelection();
+		
 
-				if (!transSelection.isEmpty() && !fromToSelection.isEmpty()) {
+				if (!transSelection.isEmpty() && !sourceSelection.isEmpty()) {
 					try {
 						String trans = ((ITranslator) transSelection
 								.getFirstElement()).translate(
-								(FromTo) fromToSelection.getFirstElement(),
+								((TranslationLanguage) sourceSelection.getFirstElement()).name,
+								(String)targetSelection.getFirstElement(),
 								term.getText());
 						translation.setText(trans);
 					} catch (InvocationTargetException e1) {

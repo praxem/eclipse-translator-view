@@ -11,20 +11,25 @@
 package at.bestsolution.translate.services;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public interface ITranslator {
-	public class FromTo {
-		public final String from;
-		public final String to;
-
-		public FromTo(String from, String to) {
-			this.from = from;
-			this.to = to;
+	public class TranslationLanguage {
+		public final String name;
+		public final List<String> targets;
+		
+		public TranslationLanguage(String name, List<String> targets) {
+			this.name = name;
+			this.targets = targets;
+		}
+		
+		public List<String> getTargets() {
+			return targets;
 		}
 	}
 
 	public String getName();
-	public FromTo[] getFromTo();
+	public TranslationLanguage[] getLanguages();
 
-	public String translate(FromTo fromTo, String term) throws InvocationTargetException;
+	public String translate(String from, String to, String term) throws InvocationTargetException;
 }
