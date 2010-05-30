@@ -28,6 +28,7 @@ is released under LGPL.
    </license>
 
    <url>
+      <update url="http://svn.codespot.com/a/eclipselabs.org/eclipse-translator-view/trunk/releng/at.bestsolution.translate.updatesite/"/>
       <discovery label="e4 updatesite" url="http://download.eclipse.org/e4/sdk/drops/S-4.0M6-201005231612/repository"/>
    </url>
 
