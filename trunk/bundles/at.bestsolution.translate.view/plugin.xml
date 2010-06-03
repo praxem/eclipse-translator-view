@@ -16,13 +16,5 @@
             id="at.bestsolution.translate.view.TranslatorView">
       </view>
    </extension>
-   <extension
-         point="org.eclipse.ui.services">
-      <serviceFactory
-            factoryClass="at.bestsolution.translate.view.DIContextServiceFactory">
-         <service
-               serviceClass="at.bestsolution.translate.view.IEclipseContextProvider"></service>
-      </serviceFactory>
-   </extension>
 
 </plugin>
