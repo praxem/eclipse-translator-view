@@ -11,6 +11,9 @@
 <provider id="org.eclipse.team.cvs.core.cvsnature">
 <project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/tools,org.eclipse.orbit/javax.annotation,javax.annotation,v1_0_0"/>
 <project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/tools,org.eclipse.orbit/javax.inject,javax.inject,v1_0"/>
+<project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/tools,org.eclipse.orbit/org.apache.batik.css,org.apache.batik.css,v1_6"/>
+<project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/tools,org.eclipse.orbit/org.apache.batik.util,org.apache.batik.util,v1_6"/>
+<project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/tools,org.eclipse.orbit/org.apache.batik.util.gui,org.apache.batik.util.gui,v1_6"/>
 <project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/eclipse,e4/org.eclipse.e4.ui/bundles/org.eclipse.e4.core.contexts,org.eclipse.e4.core.contexts"/>
 <project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/eclipse,e4/org.eclipse.e4.ui/bundles/org.eclipse.e4.core.di,org.eclipse.e4.core.di"/>
 <project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/eclipse,e4/org.eclipse.e4.ui/bundles/org.eclipse.e4.core.di.extensions,org.eclipse.e4.core.di.extensions"/>
@@ -22,5 +25,8 @@
 <project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/eclipse,e4/org.eclipse.e4.ui/bundles/org.eclipse.e4.ui.css.swt.theme,org.eclipse.e4.ui.css.swt.theme"/>
 <project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/eclipse,e4/org.eclipse.e4.ui/bundles/org.eclipse.e4.ui.di,org.eclipse.e4.ui.di"/>
 <project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/eclipse,e4/org.eclipse.e4.ui/bundles/org.eclipse.e4.ui.services,org.eclipse.e4.ui.services"/>
+<project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/tools,org.eclipse.orbit/org.w3c.css.sac,org.w3c.css.sac,v1_3"/>
+<project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/tools,org.eclipse.orbit/org.w3c.dom.smil,org.w3c.dom.smil,v1_0"/>
+<project reference="1.0,:pserver:dev.eclipse.org:/cvsroot/tools,org.eclipse.orbit/org.w3c.dom.svg,org.w3c.dom.svg,v1_1"/>
 </provider>
 </psf>
