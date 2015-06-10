@@ -1,0 +1,1 @@
+This project provides a translator view to use in Eclipse
